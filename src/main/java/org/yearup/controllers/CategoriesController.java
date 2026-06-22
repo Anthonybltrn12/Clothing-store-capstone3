@@ -78,8 +78,7 @@ public class CategoriesController {
     // add annotation to ensure that only an ADMIN can call this function
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable int id)
-    {
-        // delete the category by id and return status 204 No Content
+    {// delete the category by id and return status 204 No Content
         if(categoryService.delete(id)){
             return ResponseEntity.noContent().build();
         }
