@@ -22,13 +22,16 @@ public class CategoriesController {
 
 
     // create an Autowired constructor to inject the categoryService and productService
+    public CategoriesController(CategoryService categoryService, ProductService productService){
+        this.categoryService = categoryService;
+        this.productService = productService;
+    }
 
     // add the appropriate annotation for a get action
     @GetMapping
-    public List<Category> getAll()
-    {
+    public ResponseEntity<List<Category>> getAll() {
         // find and return all categories
-        return null;
+        return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
     // add the appropriate annotation for a get action
