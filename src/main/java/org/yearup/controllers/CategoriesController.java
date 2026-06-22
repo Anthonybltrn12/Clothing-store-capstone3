@@ -1,5 +1,6 @@
 package org.yearup.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.yearup.models.Category;
@@ -36,19 +37,19 @@ public class CategoriesController {
 
     // add the appropriate annotation for a get action
     @GetMapping("{id}")
-    public Category getById(@PathVariable int id)
-    {
+    public ResponseEntity<Category> getById(@PathVariable int id) {
         // get the category by id
-        return null;
+        return categoryService.getById(id)
+                .map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     // the url to return all products in category 1 would look like this
     // https://localhost:8080/categories/1/products
     @GetMapping("{categoryId}/products")
-    public List<Product> getProductsById(@PathVariable int categoryId)
+    public ResponseEntity<List<Product>> getProductsById(@PathVariable int categoryId)
     {
         // get a list of product by categoryId
-        return null;
+        return ResponseEntity.ok(productService.listByCategoryId(categoryId));
     }
 
     // add annotation to call this method for a POST action
@@ -57,7 +58,8 @@ public class CategoriesController {
     public ResponseEntity<Category> addCategory(@RequestBody Category category)
     {
         // insert the category and return it with status 201 Created
-        return null;
+        Category saved = categoryService.create(category);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
