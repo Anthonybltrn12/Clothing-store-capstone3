@@ -29,10 +29,11 @@ public class CategoryService
         return categoryRepository.findById(categoryId);
     }
 
-    public Category create(Category category)
-    {
+    public Category create(Category category) {
         // create a new category
-        return null;
+        category.setName(category.getName());
+        category.setDescription(category.getDescription());
+        return categoryRepository.save(category);
     }
 
     public Category update(int categoryId, Category category)
