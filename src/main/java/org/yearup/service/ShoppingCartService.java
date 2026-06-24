@@ -39,11 +39,16 @@ public class ShoppingCartService
 
     // add additional methods here
     public ShoppingCart addProduct(int productId, int userId){
-        CartItem cartItem = new CartItem();
-        cartItem.setCartItemId(cartItem.getCartItemId());
-        cartItem.setProductId(cartItem.getProductId());
-        cartItem.setQuantity(cartItem.getQuantity());
-        shoppingCartRepository.save(cartItem);
+        CartItem cartItem = shoppingCartRepository.findByUserIdAndProductId(userId, productId);
+        if(cartItem == null) {
+            CartItem cartItem1 = new CartItem();
+            cartItem1.setProductId(productId);
+            cartItem1.setUserId(userId);
+            shoppingCartRepository.save(cartItem1);
+        }else {
+            cartItem.setQuantity(cartItem.getQuantity() + 1);
+            shoppingCartRepository.save(cartItem);
+        }
 
         return getByUserId(userId);
     }
