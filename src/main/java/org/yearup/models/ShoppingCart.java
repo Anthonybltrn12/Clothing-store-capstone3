@@ -1,7 +1,12 @@
 package org.yearup.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 public class ShoppingCart
 {
