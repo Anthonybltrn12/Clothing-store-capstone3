@@ -1,6 +1,8 @@
 package org.yearup.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class ShoppingCartItem
 {
