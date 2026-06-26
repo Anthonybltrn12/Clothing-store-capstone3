@@ -218,4 +218,4 @@ Potential improvements include:
 
 ## Author
 
-Created as a full-stack Clothing Store application demonstrating Spring Boot backend development, MySQL database integration, RESTful API design, authentication, authorization, and frontend integration.
+Created as a full-stack Clothing Store application demonstrating Spring Boot backend development, MySQL database integration, RESTful API design, authentication, authorization, and frontend integration. 
